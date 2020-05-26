@@ -29,10 +29,12 @@
             //路由匹配的规则
             {
                 path: '/login',
+                name:'login',//路由的名字
                 component: Login
             },
             {
                 path: '/register',
+                name:'register',//路由的名字
                 component: Register
             }
         ]
@@ -46,8 +48,11 @@
      * */
     var App = {
         template: '<div>' +
-            '<router-link to="/login">登录</router-link>' +
-            '<router-link to="/register">注册</router-link>' +
+            // '<router-link to="/login">登录</router-link>' +
+            // '<router-link to="/register">注册</router-link>'
+                //绑定:to,{name:"路由的名字"}
+            '<router-link :to="{name:\'login\'}">登录</router-link>' +
+            '<router-link :to="{name:\'register\'}">注册</router-link>' +
             /*路由组件的出口，就是component对应的value*/
             '<router-view></router-view>' +
             '' +
