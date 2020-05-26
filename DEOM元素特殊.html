@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>全局组件</title>
+  <title>特殊</title>
   <script src="js/vue/vue.js"></script>
 </head>
 <body>
@@ -18,25 +18,28 @@
   var subComponent={
     template: '<div></div>'
   }
-
   Vue.component('subCom',subComponent);
   //需求：input输入框，获取焦点
   var App={
     data:function(){
       return{
-
+        isShow:false
       }
     },
     template: '<div>' +
-      '<button ref="btn">我是按钮</button>'+
-      '<button ref="btn2">我是按钮2</button>'+
+      '<input type="text" v-show="isShow" ref="btn2"/>'+
       '<subCom ref="subs"></subCom>'+
       '</div>',
     mounted:function(){
-      console.log(this.$refs.btn);
+      this.isShow=true;
+      console.log(this.$refs.btn2);
+      //$nextTick是在DOM更新循环结束之后执行延迟回调，在修改数据之后使用$nextTick可以在回调中获取到更新后的DOM
+      this.$nextTick(function(){
+        //更新之后的DOM
+        this.$refs.btn2.focus();
+      });
+
     }
-
-
   }
   new Vue({
     el: "#app",
@@ -48,8 +51,6 @@
     components:{
       App
     }
-
-
   });
 
 </script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <!--第1步引用vue-->
+  <script src="js/vue/vue.js"></script>
+  <!--第2步引入核心插件的vue-router-->
+  <script src="node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+<div id="app"></div>
+</body>
+<script>
+
+  //第一让vue使用该VueRouter(vue-router.js返回的对象)创建
+  Vue.use(VueRouter);
+  //第二创建路由对象
+  
+
+
+
+  var App={
+    template:'<div></div>'
+  }
+  new Vue({
+    el:'#app',
+    template:'<App/>',
+    components:{
+      App
+    },
+    data:{
+
+    }
+
+  });
+
+</script>
+</html>
