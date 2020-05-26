@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>全局组件</title>
+  <script src="js/vue/vue.js"></script>
+</head>
+<style>
+  . default {
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #dcdfe6;
+    color: #606266;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    transition: .1s;
+    font-weight: 500;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+
+  .success {
+    color: #fff;
+    background-color: #409eff;
+    border-color: #409eff;
+  }
+
+</style>
+<body>
+
+
+<div id="app">
+
+</div>
+
+
+</body>
+<script>
+  //全局过滤器
+  Vue.filter('myqjfilter', function (value,args1) {
+    return args1+"------"+value.split("").reverse().join("");
+  });
+
+  //1、声明局部组件，局部组件是一个对象，建议首字母大写
+  var App = {
+    template: '<div >' +
+      '<input type="number" name="price" v-model="price" />' +
+      '<h3> {{price | mycur }}</h3>' +
+      '{{msg | myqjfilter("lkeji")}}'+
+      '</div>',
+    data() {
+      return {
+        price: 0,
+        msg:'hello，全局过滤器'
+      }
+    },
+    //局部过滤器
+    filters: {
+      mycur: function (value) {
+        return "$" + value;
+      }
+    }
+  }
+  new Vue({
+    el: "#app",
+    template: '<App></App>',//3、使用组件，这个APP是上面自定义的组件
+    components: {
+      // App:App,key和value一样可以简写一个
+      App
+    }
+  });
+
+</script>
+</html>

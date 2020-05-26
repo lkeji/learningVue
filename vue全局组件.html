@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全局组件</title>
+  <script src="js/vue/vue.js"></script>
+</head>
+<style>
+  . default{
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #dcdfe6;
+    color: #606266;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    transition: .1s;
+    font-weight: 500;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  .success{
+    color: #fff;
+    background-color: #409eff;
+    border-color: #409eff;
+  }
+
+</style>
+<body>
+
+
+<div id="app">
+
+</div>
+
+
+</body>
+<script>
+  //全局组件
+  Vue.component('VbtnQJ',{
+    data(){
+      return{
+
+      }
+    },
+    template:'<button class="default":class="type">' +
+      '<slot></slot>' +
+      '</button>',
+    props:['type']
+  });
+
+  Vue.component('mySlot',{
+    template:'<li>' +
+      // '预留的第一个坑'+
+      '<slot name="one"></slot>' +
+      '</li>'
+  });
+
+  var Vheader={
+    template:'<div class ="head">我是头部组件' +
+      '<button @click="changeFontsize">字体变大按钮</button>' +//@是 v-on的简写
+      '</ul></div>',
+    methods:{
+      changeFontsize(){
+        //触发父组件中声明的自定义事件
+        //第一个参数是触发自定义事件的名称
+        console.log("触发父组件的change事件")
+        this.$emit('change');
+      }
+    }
+  };
+  var Vcontent={
+    template:'<div class ="head">我是头部组件' +
+      '<button >字体变大按钮</button>' +//@是 v-on的简写
+      '<VbtnQJ>我是播放的哟</VbtnQJ>' +
+      '</ul></div>'
+
+  };
+  var Vaside={
+    template:'<div class ="head">我是头部组件' +
+      '<button >字体变大按钮</button>' +//@是 v-on的简写
+      '<VbtnQJ type="sucess">我是暂停按钮</VbtnQJ>' +
+      '</ul></div>'
+
+
+  };
+  //1、声明局部组件，局部组件是一个对象，建议首字母大写
+  var App={
+    template:'<div class="main" :style="{fontSize:postFonSize}">' +
+      '<ul><mySlot>' +
+      '<h1>我是第一个坑</h1>' +
+      '<h2>我是第2个坑</h2>' +
+      '</mySlot></ul>'+
+      '</div>',
+    methods:{
+      changeheadfd(){
+        console.log("我是父亲的呗调用方法")
+        this.postFonSize+=1;
+      }
+    },
+    data(){
+      return {
+        posts:[
+          {id:1,title:"我的第1篇博客",content:"什么鬼1"},
+          {id:2,title:"我的第2篇博客",content:"什么鬼2"},
+          {id:3,title:"我的第3篇博客",content:"什么鬼3"},
+        ],
+        postFonSize:2.5+"em"
+
+      }
+    },
+    components: {
+      Vheader,
+      Vaside,
+      Vcontent
+    }
+  }
+  new Vue({
+    el:"#app",
+    template: '<App></App>',//3、使用组件，这个APP是上面自定义的组件
+    data:{
+
+    },
+    //2、挂载组件
+    components:{
+      // App:App,key和value一样可以简写一个
+      App
+    }
+  });
+
+</script>
+</html>

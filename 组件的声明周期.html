@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>全局组件</title>
+  <script src="js/vue/vue.js"></script>
+</head>
+<body>
+<!--
+生命周期的钩子函数
+beforeCreate
+created
+beforeMount
+mounted
+beforeUpdate
+updated
+activated
+deactivated
+beforeDestroy
+destroyed-->
+
+<div id="app">
+  <App></App>
+</div>
+
+</body>
+<script>
+  var test={
+    data:function () {
+      return{
+        msg:'hello beforeMount'
+      }
+    },
+    template: '<div>' +
+      '<div>{{msg}}</div>'+
+      '<button @click="changefangfa">改变</button>'+
+      '</div>',
+    methods:{
+      changefangfa(){
+        this.msg=this.msg+"哈哈哈";
+      }
+    },
+    beforeCreate:function(){
+      //组件创建之前
+      console.log(this.msg)
+    },
+    created:function(){
+      //组件创建之后，使用该组件，
+      // 就会调用created方法，在该方法中可以操作后端的数据，数据相应视图
+      // 应用，比如ajax请求
+      console.log(this.msg);
+      this.msg='我擦， 你擦不擦'
+    },
+    beforeMount:function(){
+      //挂在数据到DOM之前会调用
+      console.log(document.getElementById('app'));
+    },
+    mounted:function(){
+      //挂在数据到DOM之后会调用,Vue作用以后的DOM
+      console.log(document.getElementById('app'));
+    },
+    beforeUpdate:function(){
+      //在更新DOM之前，调用此钩子函数，应用：可以获取原始的DOM
+      console.log(document.getElementById('app').innerHTML);
+    },
+    updated:function(){
+      //在更新DOM之后，调用此钩子函数，应用：可以获取新的DOM
+      console.log(document.getElementById('app').innerHTML);
+    },
+    beforeDestroy:function(){
+      //在更新DOM之后，调用此钩子函数，应用：可以获取新的DOM
+      console.log(beforeDestroy);
+    },
+    destroyed:function(){
+      //在更新DOM之后，调用此钩子函数，应用：可以获取新的DOM
+      console.log(destroyed);
+    },
+    activated:function(){
+      //在更新DOM之后，调用此钩子函数，应用：可以获取新的DOM
+      console.log("组件被激活了");
+    },
+    deactivated:function(){
+      //在更新DOM之后，调用此钩子函数，应用：可以获取新的DOM
+      console.log("组件被停用了");
+    }
+  }
+
+  var App={
+    data:function(){
+      return{
+        isShow:true
+      }
+    },
+    //Vue的内置组件，能在组件的切换过程中将状态保存在内存中，
+    // 防止重复渲染DOM
+    template: '<div>' +
+      '<keep-alive>' +
+      '<test v-if="isShow"></test>' +
+      '</keep-alive>' +
+      '<button @click="isShow=!isShow">改变生死</button>'+
+      '</div>',
+    components: {
+      test
+    }
+  }
+  new Vue({
+    el: "#app",
+    data: function () {
+      return {
+      }
+    },
+    // template:'<App></App>',
+    components:{
+      App
+    }
+
+
+  });
+
+</script>
+</html>

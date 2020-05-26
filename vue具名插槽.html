@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全局组件</title>
+  <script src="js/vue/vue.js"></script>
+</head>
+<style>
+  . default{
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #dcdfe6;
+    color: #606266;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    transition: .1s;
+    font-weight: 500;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  .success{
+    color: #fff;
+    background-color: #409eff;
+    border-color: #409eff;
+  }
+
+</style>
+<body>
+
+
+<div id="app">
+
+</div>
+
+
+</body>
+<script>
+  //全局组件
+  Vue.component('mySlot',{
+    template:'<li>' +
+      '预留的第1个坑'+
+      '<slot name="one"></slot>' +
+      '预留的第2个坑'+
+      '<slot name="two"></slot>' +
+      '</li>'
+  });
+
+  //1、声明局部组件，局部组件是一个对象，建议首字母大写
+  var App={
+    template:'<div >' +
+      '<ul>' +
+      '<mySlot>' +
+      '<li>' +
+      '<h1 slot="one">我是第一个坑</h1>' +
+      '<h2 slot="two">我是第2个坑</h2>' +
+      '</li>' +
+      '</mySlot>' +
+      '</ul>'+
+      '</div>'
+  }
+  new Vue({
+    el:"#app",
+    template: '<App></App>',//3、使用组件，这个APP是上面自定义的组件
+    components:{
+      // App:App,key和value一样可以简写一个
+      App
+    }
+  });
+
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>全局组件</title>
+  <script src="js/vue/vue.js"></script>
+</head>
+<body>
+
+
+<div id="app">
+  <button @click="stustent[0].name='lkejixx'">改变</button>
+  <input type="text" name="" v-model="msg"/>
+  <h3>{{msg}}</h3>
+  <h4>{{stustent[0].name}}</h4>
+</div>
+
+</body>
+<script>
+  /**
+   * watch监听单个属性，基本数据类型简单监视，复杂数据类型深度监视
+   * */
+  new Vue({
+    el: "#app",
+    data: function () {
+      return {
+        msg: '',
+        stustent: [{name: 'jack'}]
+      }
+    },
+    watch: {    //监听数据属性
+      msg: function (newV, oldV) {      //key:value---->key是你要监听的属性值
+        // console.log(newV,oldV);
+        if (newV == 'lkeji') {
+          console.log(newV + "他来了，快看他来了")
+        }
+      },
+      //监听复杂的数据类型，如object和array 的深度监视
+      stustent: {
+        deep: true,//深度监视
+        handler:function(newV,oldV){
+          console.log(newV[0].name )
+        }
+      },
+    }
+
+  });
+
+</script>
+</html>
