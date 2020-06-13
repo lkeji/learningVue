@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue/vue.js"></script>
+    <script src="node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+<div id="app">
+</div>
+</body>
+<script>
+    var App={
+        template: '<div>' +
+               '<button @click="sendAjax">执行多个并发请求</button>'+
+            '</div>',
+        methods:{
+            sendAjax(){
+                //设置默认请求地址
+                this.$axios.defaults.baseURL='https://127.0.0.1:8888/'
+                var q1=this.$axios.get('')
+                var q2=this.$axios.post('add',{
+                    name:'lkj',
+                    age:'23'
+                })
+                this.$axios.all([q1,q2])
+                    .then(this.$axios.spread((result1,result2)=>{
+                        console.log(result1);
+                        console.log(result2);
+                    }))
+                    .catch(err=>{
+                        //只有要有一个失败
+                        console.log(err);
+                    })
+
+            }
+        }
+    }
+    //讲axios.js返回的对象挂在到Vue的axios对象中
+    Vue.prototype.$axios=axios;
+    new Vue({
+        el:'#app',
+        template:'<App/>',
+        components: {
+            App
+        },
+        router:router
+    });
+
+</script>
+</html>

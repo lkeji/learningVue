@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--第1步引用vue-->
+    <script src="js/vue/vue.js"></script>
+    <!--第2步引入核心插件的vue-router-->
+    <script src="node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+<div id="app"></div>
+</body>
+<script>
+
+        //声明组件
+    var Timeline={
+        template: '<div id="timeline">' +
+            '<br/>' +
+            '<router-link :to="{name:\'comDesc\',params:{id:\'andorid\'}}">安卓</router-link>' +
+            '<router-link :to="{name:\'comDesc\',params:{id:\'frontend\'}}">前段</router-link>' +
+                '<router-view/>'+
+            '</div>',
+    }
+
+        var comDesc={
+            data(){
+                return{
+                    msg:''
+                }
+            },
+            template: '<div>{{ msg }}</div>',
+            created(){
+                this.msg="andorid";
+                console.log(1);
+            },
+            watch:{
+                '$route'(to,from){
+                    console.log(to);
+                    console.log(from);
+                    this.msg=to.params.id;
+                }
+            }
+
+        }
+        var Pins={
+            template: '<div>我是沸点组件</div>',
+        }
+    var routersss = new VueRouter({
+        //第三 配置路由对象
+        routes: [
+            //路由匹配的规则
+            {
+                //动态路由参数，以冒号开头
+                path: '/timeline',
+                name: 'timeline',
+                component: Timeline,
+                children:[
+                    {
+                        path:'/timeline/:id',
+                        name:"comDesc",
+                        component: comDesc
+                    }
+
+                ]
+            },
+            {
+                path:'/pins',
+                component: Pins
+            }
+
+        ]
+    });
+    var App = {
+        template: '<div>' +
+            '<router-link to="/timeline">首页</router-link>' +
+            '<router-link to="/pins">沸点</router-link>' +
+            '<router-view></router-view>' +
+            '</div>'
+    }
+    new Vue({
+        el: '#app',
+        router: routersss,//第四 将配置好的路由对象关联到Vue实例化对象中
+        template: '<App/>',
+        components: {
+            App
+        },
+        data: {}
+    });
+</script>
+</html>
