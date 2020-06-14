@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--
+    webpack生成文件：
+        webpack 你的项目入口文件 你要输出的文件
+        webpack ./main.js ./build.js
+        有两种生成方法：
+            1、直接在Terminal里输入命令行:webpack ./main.js ./build.js
+            2、直接在package.json的scripts输入："build": "webpack ./webpack/main.js ./webpack/build.js"
+    -->
+</head>
+<body>
+ <div id="app"></div>
+ <!--引入webpack生成的build.js-->
+ <script src="../webpackconfig/build.js"></script>
+
+</body>
+</html>

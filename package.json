@@ -6,7 +6,7 @@
     "doc": "doc"
   },
   "scripts": {
-    "build": "webpack ./webpack/main.js ./webpack/build.js"
+    "build": "node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
