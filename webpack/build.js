@@ -96,37 +96,35 @@ module.exports = g;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__App__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_vue_vue_js__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_vue_vue_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__js_vue_vue_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_vue_vue_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_vue_vue_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__js_vue_vue_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(6);
 //es6 Moudule语法
 //整个项目的入口文件
 //从这个路径里面导入app对象,名字可以任意取   路径：相对路径
+// import App from "./App";
 
+//拿到抛出的key
+// import {num1,num2,add} from "./App";
+//
+// console.log(num1);
+// console.log(num2);
+// console.log(add(3,5));
 
+//整个App.js模块加载
 
-new __WEBPACK_IMPORTED_MODULE_1__js_vue_vue_js___default.a({
+console.log(__WEBPACK_IMPORTED_MODULE_1__App__["b" /* num1 */]);
+
+new __WEBPACK_IMPORTED_MODULE_0__js_vue_vue_js___default.a({
     el:'#app',
     components:{
-        App: __WEBPACK_IMPORTED_MODULE_0__App__["a" /* default */]
+       App:__WEBPACK_IMPORTED_MODULE_1__App__["a" /* default */]
     },
     template:'<App/>'
 });
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-var app={
-    template:'<div>我是一个入口组件</div>'
-};
-//抛出这个对象，这样别人就可以import拿了
-/* harmony default export */ __webpack_exports__["a"] = (app);
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
@@ -12095,10 +12093,10 @@ var app={
 
 }));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(4).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(3).setImmediate))
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -12154,7 +12152,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(5);
+__webpack_require__(4);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -12168,7 +12166,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -12358,10 +12356,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(5)))
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -12549,6 +12547,30 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return num1; });
+/* unused harmony export num2 */
+/* unused harmony export add */
+
+var app={
+    template:'<div>我是一个入口组件</div>'
+};
+//抛出这个对象，这样别人就可以import拿了
+/* harmony default export */ __webpack_exports__["a"] = (app);
+//声明一整个对象key导出
+var num1=2;
+//声明再导出
+var num2=3;
+
+
+function add(x,y) {
+    return console.log(x+y);
+}
 
 /***/ })
 /******/ ]);
