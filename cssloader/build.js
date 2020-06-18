@@ -99,7 +99,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_vue_vue_js__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_vue_vue_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__js_vue_vue_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__main_css__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__main_css__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__main_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__main_css__);
 //es6 Moudule语法
 //整个项目的入口文件
@@ -12550,21 +12550,32 @@ process.umask = function() { return 0; };
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__img_timg_jpg__ = __webpack_require__(7);
 
-var app={
-    template:'<div>我是一个入口组件</div>'
-};
-console.log(222);
-//抛出这个对象，这样别人就可以import拿了
-/* harmony default export */ __webpack_exports__["a"] = (app);
-
+/* harmony default export */ __webpack_exports__["a"] = ({
+    template:'<div>' +
+        '<img :src="imgSrc" alt="" />' +
+        '</div>',
+    data(){
+        return{
+            imgSrc:'../'+__WEBPACK_IMPORTED_MODULE_0__img_timg_jpg__["a" /* default */]
+        }
+    }
+});
 
 /***/ }),
 /* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.p + "ec95e9cbfeb4a6d1777e8f222622fb84.jpg");
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var api = __webpack_require__(8);
-            var content = __webpack_require__(9);
+var api = __webpack_require__(9);
+            var content = __webpack_require__(10);
 
             content = content.__esModule ? content.default : content;
 
@@ -12584,7 +12595,7 @@ var update = api(content, options);
 module.exports = content.locals || {};
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12859,11 +12870,11 @@ module.exports = function (list, options) {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(10);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(11);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "body{\r\n    background-color: green;\r\n}", ""]);
@@ -12872,7 +12883,7 @@ module.exports = exports;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

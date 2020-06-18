@@ -26,6 +26,11 @@ module.exports={
                 test:/\.css$/,//对后缀为css的文件进行处理
                 //执行顺序：先右后左
                 loader: 'style-loader!css-loader'
+            },
+            {
+                test: /\.(img|png|jpeg|gif|svg|jpg)/,
+                //直接引入下载的url-loader,以K来作为大小单位，1KB=1024K，limit设置的值如果小图该图片大小该图会以base64的格式文件来生成文件
+                loader:'url-loader?limit=25000'
             }
         ]
     }
