@@ -9,7 +9,7 @@ module.exports={
     },
     //出口
     output: {
-        filename: "./cssloader/build.js"
+        filename: "./less/build.js"
     },
     //监视html改动，自动产出build.js
     watch: true,
@@ -31,6 +31,10 @@ module.exports={
                 test: /\.(img|png|jpeg|gif|svg|jpg)/,
                 //直接引入下载的url-loader,以K来作为大小单位，1KB=1024K，limit设置的值如果小图该图片大小该图会以base64的格式文件来生成文件
                 loader:'url-loader?limit=25000'
+            },
+            {
+                test: /\.less$/,
+                loader:'style-loader!css-loader!less-loader'
             }
         ]
     }
