@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/lkeji/learningVue#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "vue-router": "^3.2.0"
   },
   "devDependencies": {
